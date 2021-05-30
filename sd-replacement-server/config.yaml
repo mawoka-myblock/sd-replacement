@@ -1,0 +1,10 @@
+Config:
+  Key: 22261475
+  Port: 4000
+Mappings:
+    c:
+    - alt
+    - f4
+
+
+
