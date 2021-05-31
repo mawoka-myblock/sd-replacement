@@ -5,6 +5,8 @@ A program (actually 2) to use an old PC as a StreamDeck-replacement.
 I had an old 32-Bit laptop lying around and thought `What could I do with it?` and 
 I wanted to have a StreamDeck, but it is too expensive imho. So I programmed this stupid thing.
 
+# Warning
+**The whole thing is kind of slow (0.7-1 sec until the buttons get virtually pressed)**
 # Highlights
 - Easy2use
 - Cheap
