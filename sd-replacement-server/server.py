@@ -4,6 +4,8 @@ import yaml
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask import request
 import pyautogui
+from werkzeug.middleware.proxy_fix import ProxyFix
+
 
 
 auth = HTTPBasicAuth()
@@ -20,10 +22,10 @@ def push_button(button):
     for i in config_file["Mappings"]:
         if i == button:
             for b in config_file["Mappings"][button]:
-                pyautogui.keyDown(b)
+                pyautogui.keyDown(str(b))
 
             for b in config_file["Mappings"][button]:
-                pyautogui.keyUp(b)
+                pyautogui.keyUp(str(b))
 
 
 @auth.verify_password
@@ -54,4 +56,5 @@ def action():
 
 
 if __name__ == "__main__":
-    app.run(port=port)
+    app.wsgi_app = ProxyFix(app.wsgi_app)
+    #app.run(port=port)
