@@ -31,10 +31,8 @@ if exists("config.yaml"):
             print(event, "exiting")
             break
         text_elem.update(re.sub(r"(:\d+)", "", event))
-        print(re.sub(r"(:\d+)", "", event))
         try:
             r = requests.post(f"http://{url}/button_pressed", auth=HTTPBasicAuth("client", pin), data={"key": re.sub(r"(:\d+)", "", event)})
-            print(r.text)
         except Exception as e:
             print(e)
             break
@@ -66,21 +64,15 @@ else:
         elif window["port"].get() and window["pin"].get() and window["ip_addr"].get() != "":
             try:
                 r = requests.get(f"http://{window['ip_addr'].get()}:{window['port'].get()}/test-token", auth=HTTPBasicAuth("client", window["pin"].get()))
-                print(r.status_code)
                 if r.status_code == 401:
                     window["errortext"]("The pin seams to be wrong!")
                 elif r.status_code == 200 and r.text == "ok":
                     with open("config.yaml", "w") as f:
-                        print(window['pin'].get())
-                        print(yaml.dump({"Connection": {"Url": f"{window['ip_addr'].get()}:{window['port'].get()}",
-                                                          "pin": window['pin'].get().replace("'", "")}}))
                         f.write(yaml.dump({"Connection": {"Url": f"{window['ip_addr'].get()}:{window['port'].get()}",
                                                           "pin": window['pin'].get().replace("'", "")}}))
                     sg.popup("Setup completed!")
             except ValueError:
-                print("hi")
                 window["errortext"]("You didn't enter a valid URL/port! (ValueError)")
             except ConnectionError:
-                print("Moin")
                 window["errortext"]("There is no server on the port/IP-Adress you specified! (ConnectionError)")
 

@@ -5,6 +5,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from flask import request
 import pyautogui
 
+
 auth = HTTPBasicAuth()
 app = Flask(__name__)
 port = 4000
