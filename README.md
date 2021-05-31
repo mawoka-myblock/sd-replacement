@@ -43,6 +43,7 @@ Mappings: # Here you can specify everything
 2. F4 -> Down
 
 **Now it is done, so it releases the keys:**
+
 3. Alt -> Up
 4. F4 -> Up
 
