@@ -25,7 +25,7 @@ to your needs.
 7. Have fun!
 
 
-# Example Configuration
+## Example Configuration
 ```yaml
 Config:
   Key: 193749 # The key required for authentication 
