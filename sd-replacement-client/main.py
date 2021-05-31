@@ -22,7 +22,7 @@ if exists("config.yaml"):
               [sg.Button("OK")]]
 
     window = sg.Window("Keyboard Test", layout, return_keyboard_events=True, use_default_focus=False, finalize=True)
-    # window.maximize()
+    window.maximize()
     # ---===--- Loop taking in user input --- #
     while True:
         event, value = window.read()
