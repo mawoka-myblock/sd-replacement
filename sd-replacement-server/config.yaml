@@ -2,9 +2,12 @@ Config:
   Key: 22261475
   Port: 4000
 Mappings:
-    c:
+  c:
     - alt
     - f4
+  b:
+    - ctrl
+    - c
 
 
 
