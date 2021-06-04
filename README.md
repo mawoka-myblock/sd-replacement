@@ -7,6 +7,8 @@ I wanted to have a StreamDeck, but it is too expensive imho. So I programmed thi
 
 # Warning
 **The whole thing is kind of slow (0.7-1 sec until the buttons get virtually pressed)**
+**It is only slow on buttons, not on commands, because of PyAutoGUI**
+
 # Highlights
 - Easy2use
 - Cheap

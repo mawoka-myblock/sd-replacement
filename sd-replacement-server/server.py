@@ -30,7 +30,6 @@ def push_button(button):
             for i in config_file["Commands"]:
                 if i == button and not done:
                     program = " ".join(config_file["Commands"][button])
-                    print(list(program.split(" ")))
                     subprocess.call(list(program.split(" ")))
                     done = True
 
@@ -39,7 +38,6 @@ def push_button(button):
 
 @app.post("/button_pressed", response_class=PlainTextResponse)
 async def button_pressed(key: str, token: str):
-    print("Hallo")
     if token == str(config_file["Config"]["Key"]):
         push_button(key)
         return "ok"
