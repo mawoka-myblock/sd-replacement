@@ -22,7 +22,7 @@ if exists("config.yaml"):
               [sg.Button("OK")]]
 
     window = sg.Window("Keyboard Test", layout, return_keyboard_events=True, use_default_focus=False, finalize=True)
-    window.maximize()
+    #window.maximize()
     # ---===--- Loop taking in user input --- #
     while True:
         event, value = window.read()
@@ -32,7 +32,14 @@ if exists("config.yaml"):
             break
         text_elem.update(re.sub(r"(:\d+)", "", event))
         try:
-            r = requests.post(f"http://{url}/button_pressed", auth=HTTPBasicAuth("client", pin), data={"key": re.sub(r"(:\d+)", "", event)})
+            print("Start request")
+            params = {"key": re.sub(r"(:\d+)", "", event), "token": pin}
+            print(params)
+            re_expression = re.sub(rf'(:\d+)', '', event)
+            r = requests.post(f"http://{url}/button_pressed?key={re_expression}&token={pin}")
+
+            print(r.url)
+            print(r.status_code)
         except Exception as e:
             print(e)
             break
@@ -49,7 +56,7 @@ else:
               [sg.Button("Ok")]]
 
     window = sg.Window("Set Up", layout, finalize=True)
-    #window.maximize()
+    window.maximize()
     while True:
         event, value = window.read()
         if event == "OK" or event == sg.WIN_CLOSED:
@@ -63,7 +70,9 @@ else:
             window["errortext"]("Please enter a port!")
         elif window["port"].get() and window["pin"].get() and window["ip_addr"].get() != "":
             try:
-                r = requests.get(f"http://{window['ip_addr'].get()}:{window['port'].get()}/test-token", auth=HTTPBasicAuth("client", window["pin"].get()))
+                print("Start request")
+                r = requests.post(f"http://{window['ip_addr'].get()}:{window['port'].get()}/test-token", data={"token": window['pin'].get()})
+                print(r.status_code)
                 if r.status_code == 401:
                     window["errortext"]("The pin seams to be wrong!")
                 elif r.status_code == 200 and r.text == "ok":

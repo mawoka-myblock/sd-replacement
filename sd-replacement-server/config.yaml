@@ -12,3 +12,11 @@ Mappings:
     - a
     - p
     - l
+  m:
+    - strg
+    - shift
+    - m
+
+Commands:
+  c:
+    - brave https://google.com

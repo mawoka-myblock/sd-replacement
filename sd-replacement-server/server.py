@@ -1,24 +1,24 @@
-from flask import Flask
-from flask_httpauth import HTTPBasicAuth
 import yaml
-from werkzeug.security import generate_password_hash, check_password_hash
-from flask import request
 import pyautogui
-from werkzeug.middleware.proxy_fix import ProxyFix
+from fastapi import FastAPI, WebSocket
+from fastapi.responses import PlainTextResponse
+from fastapi.responses import HTMLResponse
+import subprocess
 
 
+app = FastAPI()
 
-auth = HTTPBasicAuth()
-app = Flask(__name__)
+
 port = 4000
 
 with open("config.yaml", "r") as f:
     config_file = yaml.safe_load(f)
 
-users = {"client": generate_password_hash(str(config_file["Config"]["Key"]))}
+users = {"client": str(config_file["Config"]["Key"])}
 
 
 def push_button(button):
+    done = False
     for i in config_file["Mappings"]:
         if i == button:
             for b in config_file["Mappings"][button]:
@@ -26,35 +26,34 @@ def push_button(button):
 
             for b in config_file["Mappings"][button]:
                 pyautogui.keyUp(str(b))
-
-
-@auth.verify_password
-def verify_password(username, password):
-    if username in users and check_password_hash(users.get(username), password):
-        return username
-
-
-@app.route("/")
-@auth.login_required
-def hello_world():
-    return f"Hello, {auth.current_user()}"
-
-
-@app.route("/test-token")
-@auth.login_required
-def test_token():
-    return "ok"
+        else:
+            for i in config_file["Commands"]:
+                if i == button and not done:
+                    program = " ".join(config_file["Commands"][button])
+                    print(list(program.split(" ")))
+                    subprocess.call(list(program.split(" ")))
+                    done = True
 
 
 
 
-@app.route("/button_pressed", methods=["POST"])
-@auth.login_required()
-def action():
-    push_button(request.form["key"])
-    return request.form["key"]
+@app.post("/button_pressed", response_class=PlainTextResponse)
+async def button_pressed(key: str, token: str):
+    print("Hallo")
+    if token == str(config_file["Config"]["Key"]):
+        push_button(key)
+        return "ok"
+    else:
+        return "Invalid token"
+
+@app.post("/test-token")
+def test_key(token: str):
+    if token == str(config_file["Config"]["Key"]):
+        return PlainTextResponse("ok")
+    else:
+        return "Token incorrect"
 
 
-if __name__ == "__main__":
-    app.wsgi_app = ProxyFix(app.wsgi_app)
-    #app.run(port=port)
+
+
+
