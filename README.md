@@ -41,6 +41,9 @@ Mappings: # Here you can specify everything
   b:
     - ctrl
     - c 
+Commands:  # Here can be put shell-commands
+  l:   # The button which triggers...
+    - brave https://ddg.gg # ...This command
 ```
  Note, It doesn't press them after each other, it does it like this:
 1. Alt -> Down
