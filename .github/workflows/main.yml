@@ -29,6 +29,7 @@ jobs:
         uses: mawoka-myblock/setup-cordova@master
         with:
           exec: |
+            mkdir -p $ANDROID_HOME/ndk-bundle/toolchains/mips64el-linux-android/prebuilt/linux-x86_64 && \
             export SENTRY_SKIP_AUTO_RELEASE=true && \
             cd sd-client/ && \
             pwd && ls && \
