@@ -29,7 +29,6 @@ jobs:
         uses: mawoka-myblock/setup-cordova@master
         with:
           exec: |
-            $ANDROID_SDK_ROOT/tools/bin/sdkmanager --install "ndk;21.0.6113669" && \
             export SENTRY_SKIP_AUTO_RELEASE=true && \
             cd sd-client/ && \
             pwd && ls && \
