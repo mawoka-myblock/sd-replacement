@@ -2,12 +2,24 @@ import yaml
 import pyautogui
 from fastapi import FastAPI, WebSocket
 from fastapi.responses import PlainTextResponse
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import HTMLResponse
 import subprocess
 
 
 app = FastAPI()
 
+origins = [
+    "*",
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 port = 4000
 
@@ -36,7 +48,7 @@ def push_button(button):
 
 
 
-@app.post("/button_pressed", response_class=PlainTextResponse)
+@app.get("/button_pressed", response_class=PlainTextResponse)
 async def button_pressed(key: str, token: str):
     if token == str(config_file["Config"]["Key"]):
         push_button(key)
@@ -44,12 +56,12 @@ async def button_pressed(key: str, token: str):
     else:
         return "Invalid token"
 
-@app.post("/test-token")
+@app.get("/test-token")
 def test_key(token: str):
     if token == str(config_file["Config"]["Key"]):
         return PlainTextResponse("ok")
     else:
-        return "Token incorrect"
+        return PlainTextResponse("Token incorrect", status_code=401)
 
 
 
