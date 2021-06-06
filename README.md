@@ -1,4 +1,4 @@
-# Sd-Reploacement
+# Sd-Replacement
 A program (actually 2) to use an old PC as a StreamDeck-replacement.
 
 ### Why I did this?
