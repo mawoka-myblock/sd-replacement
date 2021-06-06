@@ -29,6 +29,7 @@ jobs:
         uses: mawoka-myblock/setup-cordova@master
         with:
           exec: |
+            export SENTRY_SKIP_AUTO_RELEASE=true && \
             cd sd-client/ && \
             pwd && ls && \
             cordova platform add android && \
