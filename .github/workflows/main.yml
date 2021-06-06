@@ -25,7 +25,7 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Setup Cordova
-        uses: mawoka-myblock/setup-cordova@0.3
+        uses: mawoka-myblock/setup-cordova@0.0.3
         with:
           exec: |
             cd sd-client && \
