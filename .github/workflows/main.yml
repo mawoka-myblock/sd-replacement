@@ -42,5 +42,5 @@ jobs:
           # Artifact name
           name: Build
           # A file, directory or wildcard pattern that describes what to upload
-          path: .
+          path: app-debug.apk
 
