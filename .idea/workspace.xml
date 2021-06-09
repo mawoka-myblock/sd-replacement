@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="53fe2c01-c099-4aaf-acbd-07c35ae23053" name="Default Changelist" comment=":tada: Hosted webversion is available!" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="ProjectId" id="1tGTapzQOpkF7E2Nep1EsPPSt7Y" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="add_unversioned_files" value="$PROJECT_DIR$/docs/slides.md" />
+    <property name="last.edited.regexp" value="" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/sd-client/platforms/electron" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/sd-client/platforms/electron" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/public" />
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/sd-replacement-server" />
+      <recent name="$PROJECT_DIR$/sd-client" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <module name="sd-replacement" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="53fe2c01-c099-4aaf-acbd-07c35ae23053" name="Default Changelist" comment="" />
+      <created>1622394492678</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1622394492678</updated>
+    </task>
+    <task id="LOCAL-00001" summary="Initial Commit">
+      <created>1622394909992</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1622394909992</updated>
+    </task>
+    <task id="LOCAL-00002" summary=":memo: Added Documentation in README.md">
+      <created>1622446734667</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1622446734667</updated>
+    </task>
+    <task id="LOCAL-00003" summary=":memo: Fixed README.md">
+      <created>1622447286891</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1622447286891</updated>
+    </task>
+    <task id="LOCAL-00004" summary=":memo: Fixed README.md (again)">
+      <created>1622447322558</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1622447322558</updated>
+    </task>
+    <task id="LOCAL-00005" summary=":mute: Removed print-statements">
+      <created>1622448007993</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1622448007993</updated>
+    </task>
+    <task id="LOCAL-00006" summary=":bug: Fixed problem with number-keys">
+      <created>1622450908723</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1622450908723</updated>
+    </task>
+    <task id="LOCAL-00007" summary=":sparkles: Maximize window">
+      <created>1622450950502</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1622450950502</updated>
+    </task>
+    <task id="LOCAL-00008" summary=":memo: Added warning">
+      <created>1622451494824</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1622451494824</updated>
+    </task>
+    <task id="LOCAL-00009" summary=":sparkles: Added ability to run command">
+      <created>1622796603376</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1622796603376</updated>
+    </task>
+    <task id="LOCAL-00010" summary=":mute: Removed print-statements">
+      <created>1622796904805</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1622796904805</updated>
+    </task>
+    <task id="LOCAL-00011" summary=":memo: documented new feature">
+      <created>1622797031610</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1622797031610</updated>
+    </task>
+    <task id="LOCAL-00012" summary=":pencil2: Fixed typo">
+      <created>1622991953539</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1622991953539</updated>
+    </task>
+    <task id="LOCAL-00013" summary=":memo: Added Cordova-instructions">
+      <created>1622992300817</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1622992300817</updated>
+    </task>
+    <task id="LOCAL-00014" summary=":sparkles: First release!">
+      <created>1623256660051</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1623256660051</updated>
+    </task>
+    <task id="LOCAL-00015" summary=":sparkles: First release (addition)!">
+      <created>1623258508711</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1623258508711</updated>
+    </task>
+    <task id="LOCAL-00016" summary=":ambulance: HOTFIX">
+      <created>1623259587272</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1623259587272</updated>
+    </task>
+    <task id="LOCAL-00017" summary=":tada: Hosted webversion is available!">
+      <created>1623259926547</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1623259926547</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Initial Commit" />
+    <MESSAGE value=":memo: Added Documentation in README.md" />
+    <MESSAGE value=":memo: Fixed README.md" />
+    <MESSAGE value=":memo: Fixed README.md (again)" />
+    <MESSAGE value=":bug: Fixed problem with number-keys" />
+    <MESSAGE value=":sparkles: Maximize window" />
+    <MESSAGE value=":memo: Added warning" />
+    <MESSAGE value=":sparkles: Added ability to run command" />
+    <MESSAGE value=":mute: Removed print-statements" />
+    <MESSAGE value=":memo: documented new feature" />
+    <MESSAGE value=":pencil2: Fixed typo" />
+    <MESSAGE value=":memo: Added Cordova-instructions" />
+    <MESSAGE value=":sparkles: First release!" />
+    <MESSAGE value=":sparkles: First release (addition)!" />
+    <MESSAGE value=":ambulance: HOTFIX" />
+    <MESSAGE value=":tada: Hosted webversion is available!" />
+    <option name="LAST_COMMIT_MESSAGE" value=":tada: Hosted webversion is available!" />
+  </component>
+</project>

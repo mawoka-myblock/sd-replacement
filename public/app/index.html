@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+    <head>
+    <script>
+    (function(w){var i=w.SENTRY_RELEASE=w.SENTRY_RELEASE||{};i.id='8491490c2cc3548cf4bf';})(this);
+    </script>
+    <!-- sentry-cordova -->
+        <meta charset="utf-8">
+    
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
+        <meta name="color-scheme" content="light white">
+        <!--<link rel="stylesheet" href="css/index.css">-->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@materializecss/materialize@1.1.0-alpha/dist/css/materialize.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/@materializecss/materialize@1.1.0-alpha/dist/js/materialize.min.js"></script>
+        <link rel="stylesheet" href="css/own.css">
+        <title>Set Up</title>
+    </head>
+    <body>
+        
+        <!--<div class="app">
+            <h1>Apache Cordova</h1>
+            <div id="deviceready" class="blink">
+                <p class="event listening">Connecting to Device</p>
+                <p class="event received">Device is Ready</p>
+            </div>
+        </div>-->
+        
+        <div id="modal1" class="modal modal-fixed-footer">
+            <div class="modal-content">
+                <h4>Analytics</h4>
+                <p>Yea, we all love Analytics (Not)! I, <a href="https://mawoka.eu.org">Mawoka</a>, hate Analytics, BUT I don't have a problem with them at all.
+                I only have a problem with these tech-giants who get the data (*Google, Facebook*). Because of that, I use <a href="https://sentry.io">Sentry</a>.
+                Other analytics aren't implemented yet. <br>
+                So, please help me via enabling Sentry, so I see bugs and errors, which are occuring while you use the app. Of course, you don't have to agree. You can disagree by scrolling down on the buttons.</p>
+            </div>
+            <div class="modal-footer">
+                <a href="#!" class="modal-close waves-effect waves-green btn-flat" onclick='localStorage.setItem("analytics", "sentry")'>Allow only Sentry</a>
+                <a href="#!" class="modal-close waves-effect waves-green btn-flat" onclick='localStorage.setItem("analytics", "all")'>Allow all</a>
+                <a href="#!" class="modal-close waves-effect waves-green btn-flat" onclick='localStorage.setItem("analytics", "nothing")'>Allow Nothing</a>
+            </div>
+          </div>
+
+
+        <div class="container">
+            <h1>Let's set everything up!</h1>
+            <!--<p>Host</p>-->
+            <div class="input-field">
+                <input class="validate" id="host" type="url">
+                <label for="host">Host</label>
+            </div>
+            
+            <div class="input-field">
+                <input class="input-field" id="pin", type="number" data-length="10">
+                <label for="pin">PIN</label>
+            </div>
+
+            <button class="waves-effect waves-light btn z-depth-2" onclick="testConnection()" id="submit_btn">Test!</button>
+
+        </div>
+        <div class="container">
+            <div class="preloader-wrapper small active" style="visibility: hidden;" id="loader_submit">
+                <div class="spinner-layer spinner-blue-only">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="gap-patch">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+
+            <a id="errowarning"></a>
+
+        </div>
+            <script src="cordova.js"></script>
+            <script src="js/index.js"></script>
+        
+    </body>
+</html>
