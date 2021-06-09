@@ -29,12 +29,12 @@ jobs:
         uses: mawoka-myblock/setup-cordova@master
         with:
           exec: |
-            export SENTRY_SKIP_AUTO_RELEASE=true && \
             cd sd-client/ && \
-            pwd && ls && \
+            export SENTRY_SKIP_AUTO_RELEASE=true && \
             cordova platform add android && \
             cordova build --no-telemetry && \
-            cp "$(find . -name '*.apk')" .
+            cp "$(find . -name '*.apk')" . && \
+            ls && pwd
       
       - name: Upload a Build Artifact
         uses: actions/upload-artifact@v2.2.3
@@ -42,5 +42,5 @@ jobs:
           # Artifact name
           name: Build
           # A file, directory or wildcard pattern that describes what to upload
-          path: $(find . -name '*.apk')
+          path: ./app-debug.apk
 
