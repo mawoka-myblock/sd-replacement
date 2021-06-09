@@ -1,4 +1,7 @@
+document.addEventListener('deviceready', onDeviceReady, false);
+
 function onDeviceReady() {
+    console.log(navigator.vibrate);
     // Cordova is now initialized. Have fun!
     if (localStorage.getItem("analytics") == "all") {
         var Sentry = cordova.require("sentry-cordova.Sentry");
@@ -16,6 +19,7 @@ function onDeviceReady() {
 
 document.addEventListener("keypress", (e) => {
     buttonPressed((e.code).replace("Key", "").toLowerCase())
+    navigator.vibrate(300)
 })
 
 function buttonPressed(btn) {

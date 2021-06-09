@@ -1,22 +1,8 @@
 Config:
-  Key: 88114729
+  Key: 40584149
   Port: 4000
 Mappings:
-  Alt_L:
-  - ctrl
-  - v
-  space:
-    #- strg
-    #- shift
-    #- m
-    - a
-    - p
-    - l
-  m:
-    - strg
-    - shift
-    - m
-
-Commands:
-  c:
-    - brave https://google.com
+  a:
+  - CTRL
+  - esc
+  - l

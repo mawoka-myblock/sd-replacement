@@ -30,5 +30,6 @@
     </platform>
     <platform name="electron">
         <icon src="res/icon.png" />
+        <preference name="ElectronSettingsFilePath" value="res/electron.json" />
     </platform>
 </widget>

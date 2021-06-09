@@ -1,0 +1,38 @@
+{
+    "browserWindow": {
+        "fullscreen": true
+    },
+    "electron": {
+        "linux": {
+            "package": [
+                "AppImage",
+                "deb",
+                "zip"
+            ],
+            "arch": [
+                "x64",
+                "ia32",
+                "armv7l"
+            ]
+        },
+        "windows": {
+            "package": [
+                "zip",
+                "portable",
+                "exe"
+            ],
+            "arch": [
+                "x64"
+            ]
+        },
+        "mac": {
+            "package": [
+                "zip"
+            ],
+            "arch": [
+                "x64"
+            ]
+            
+        }
+    }
+}

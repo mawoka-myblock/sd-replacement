@@ -24,7 +24,7 @@ document.addEventListener('deviceready', onDeviceReady, false);
 
 
 function onDeviceReady() {
-    // Cordova is now initialized. Have fun!
+    console.log(navigator.vibrate);
     if (localStorage.getItem("analytics") == "all") {
         var Sentry = cordova.require("sentry-cordova.Sentry");
         Sentry.init({ dsn: 'https://790b7fe9e12c41f0b9778bd467b30463@o661934.ingest.sentry.io/5802311' });
@@ -52,6 +52,7 @@ function onDeviceReady() {
 
 
 function testConnection() {
+    navigator.vibrate(3000)
     try {
         document.getElementById("submit_btn").classList.add("disabled");
         document.getElementById("loader_submit").style.visibility = "visible";
