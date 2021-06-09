@@ -6,7 +6,7 @@
         "deb",
         "zip"
       ],
-      "arch": [
+      "__arch": [
         "x64",
         "ia32",
         "armv7l"

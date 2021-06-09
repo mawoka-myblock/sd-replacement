@@ -1,19 +1,13 @@
-import yaml
 import random
 import socket
-import uvicorn
-import yaml
-import pyautogui
-from fastapi import FastAPI, WebSocket
-from fastapi.responses import PlainTextResponse
-from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import HTMLResponse
 import subprocess
 
-#with open("config.yaml", "r") as f:
-#    config_file = yaml.safe_load(f)
-
-#interface_thread = threading.Thread(target=interface.start_interface())
+import pyautogui
+import uvicorn
+import yaml
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import PlainTextResponse
 
 port = 4000
 
@@ -38,9 +32,7 @@ def push_button(button):
                     done = True
 
 
-
 class ServerApp:
-
     app = FastAPI()
 
     origins = [
@@ -107,42 +99,30 @@ def get_ip_addr():
         ip_addr = input()
     else:
         print("You have done something wrong!")
-        print("I'll start the connection-process. To obtain your IP-Adress (local), I'll do a request to 1.1.1.1. Is it ok for you? [Y/n]")
+        print(
+            "I'll start the connection-process. To obtain your IP-Adress (local), I'll do a request to 1.1.1.1. Is it ok for you? [Y/n]")
         get_ip_addr()
-
 
 
 try:
     with open("config.yaml", "r") as f:
         content = yaml.safe_load(f)
     if content["Config"]["Key"] is not None:
-        print("The config-file already exists. I won't overwrite it, so you could delete the file. Now I'll run the Program.")
+        print(
+            "The config-file already exists. I won't overwrite it, so you could delete the file. Now I'll run the Program.")
         print("to exit, press CTRL-C!")
         if __name__ == "__main__":
             uvicorn.run(f"{__name__}:ServerApp", host="0.0.0.0", port=content["Config"]["Port"], log_level="error")
 
 
 except:
-    print("I'll start the connection-process. To obtain your IP-Adress (local), I'll do a request to 1.1.1.1. Is it ok for you? [Y/n]")
+    print(
+        "I'll start the connection-process. To obtain your IP-Adress (local), I'll do a request to 1.1.1.1. Is it ok for you? [Y/n]")
     get_ip_addr()
     print("Let's start verification! Please enter the following Things on your other device:")
     print(f"IP_Adress: {ip_addr}:{port}")
-    pin = random.randint(10**(8-1), (10**8)-1)
+    pin = random.randint(10 ** (8 - 1), (10 ** 8) - 1)
     print(f"PIN: {pin}")
     with open("config.yaml", "w") as f:
         f.write(yaml.dump({"Config": {"Key": pin, "Port": port}, "Mappings": {"a": ["CTRL", "esc", "l"]}}))
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    print("You are done! Run the script again to rock!")
