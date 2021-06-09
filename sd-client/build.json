@@ -1,0 +1,35 @@
+{
+  "electron": {
+    "linux": {
+      "package": [
+        "AppImage",
+        "deb",
+        "zip"
+      ],
+      "arch": [
+        "x64",
+        "ia32",
+        "armv7l"
+      ]
+    },
+    "__windows": {
+      "package": [
+        "zip",
+        "portable",
+        "exe"
+      ],
+      "arch": [
+        "x64"
+      ]
+    },
+    "__mac": {
+      "package": [
+        "zip"
+      ],
+      "arch": [
+        "x64"
+      ]
+   }
+
+  }
+}

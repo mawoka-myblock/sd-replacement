@@ -73,7 +73,7 @@ instance/
 .scrapy
 
 # Sphinx documentation
-docs/_build/
+trash/_build/
 
 # PyBuilder
 .pybuilder/
@@ -149,3 +149,7 @@ cython_debug/
 /plugins/
 /platforms/
 node_modules/
+
+
+#  docs
+docs/

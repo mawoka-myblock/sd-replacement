@@ -8,7 +8,7 @@
     <author email="mawoka@e.email" href="https://mawoka.eu.org">
         Mawoka
     </author>
-    
+
     <content src="index.html" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
@@ -31,5 +31,8 @@
     <platform name="electron">
         <icon src="res/icon.png" />
         <preference name="ElectronSettingsFilePath" value="res/electron.json" />
+    </platform>
+    <platform name="electron">
+        <preference name="ElectronSettingsFilePath" value="res/electron/settings.json" />
     </platform>
 </widget>
