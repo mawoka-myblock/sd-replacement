@@ -13,6 +13,7 @@ I wanted to have a StreamDeck, but it is too expensive imho. So I programmed thi
 - Easy2use
 - Cheap
 - Use old computers
+- Web-Version available, [HERE](https://mawoka-myblock.github.io/sd-replacement/app/)
 
 # How2use?
 At first, you should have 2 devices. One is your Main-Computer where everything gets executed.
