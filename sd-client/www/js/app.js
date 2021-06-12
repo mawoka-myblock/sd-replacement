@@ -33,8 +33,13 @@ function onDeviceReady() {
             document.getElementById(`b${i}`).style.backgroundColor = localStorage.getItem(`btn-color-${i}`)
         }
     }
-    
+
+
 }
+
+document.addEventListener("long-press", function(e) {
+    window.location.replace("settings.html")
+})
 
 
 

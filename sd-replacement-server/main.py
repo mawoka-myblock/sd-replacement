@@ -8,11 +8,14 @@ import yaml
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import PlainTextResponse
+import os
+from contextlib import suppress
 
 port = 4000
 
-with open("config.yaml", "r") as f:
-    config_file = yaml.safe_load(f)
+if os.path.isfile("config.yaml"):
+    with open("config.yaml", "r") as f:
+        config_file = yaml.safe_load(f)
 
 
 def push_button(button):
@@ -34,44 +37,45 @@ def push_button(button):
                 done = True
 
 
+try:
+    app = FastAPI()
 
-app = FastAPI()
+    origins = [
+        "*",
+    ]
 
-origins = [
-    "*",
-]
-
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=origins,
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
-
-port = 4000
-
-with open("config.yaml", "r") as f:
-    config_file = yaml.safe_load(f)
-
-users = {"client": str(config_file["Config"]["Key"])}
+    app.add_middleware(
+        CORSMiddleware,
+        allow_origins=origins,
+        allow_credentials=True,
+        allow_methods=["*"],
+        allow_headers=["*"],
+    )
 
 
 
-@app.get("/button_pressed", response_class=PlainTextResponse)
-async def button_pressed(key: str, token: str):
-    if token == str(config_file["Config"]["Key"]):
-        push_button(key)
-        return "ok"
-    else:
-        return "Invalid token"
+    users = {"client": str(config_file["Config"]["Key"])}
 
-@app.get("/test-token")
-def test_key(token: str):
-    if token == str(config_file["Config"]["Key"]):
-        return PlainTextResponse("ok")
-    else:
-        return PlainTextResponse("Token incorrect", status_code=401)
+
+
+    @app.get("/button_pressed", response_class=PlainTextResponse)
+    async def button_pressed(key: str, token: str):
+        if token == str(config_file["Config"]["Key"]):
+            push_button(key)
+            return "ok"
+        else:
+            return "Invalid token"
+
+    @app.get("/test-token")
+    def test_key(token: str):
+        if token == str(config_file["Config"]["Key"]):
+            return PlainTextResponse("ok")
+        else:
+            return PlainTextResponse("Token incorrect", status_code=401)
+except:
+    if os.path.isfile("config.yaml"):
+        print("Error")
+    pass
 
 
 def get_ip_addr():
@@ -112,5 +116,5 @@ except:
     pin = random.randint(10 ** (8 - 1), (10 ** 8) - 1)
     print(f"PIN: {pin}")
     with open("config.yaml", "w") as f:
-        f.write(yaml.dump({"Config": {"Key": pin, "Port": port}, "Mappings": {"a": ["CTRL", "esc", "l"]}}))
+        f.write(yaml.dump({"Config": {"Key": pin, "Port": port}, "Mappings": {"a": ["CTRL", "esc", "l"]}, "Commands": {"b": ["brave https://ddg.gg"]}}))
     print("You are done! Run the script again to rock!")
