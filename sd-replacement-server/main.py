@@ -17,45 +17,7 @@ with open("config.yaml", "r") as f:
 
 def push_button(button):
     done = False
-    for i in config_file["Mappings"]:
-        if i == button:
-            for b in config_file["Mappings"][button]:
-                pyautogui.keyDown(str(b))
-
-            for b in config_file["Mappings"][button]:
-                pyautogui.keyUp(str(b))
-        else:
-            for i in config_file["Commands"]:
-                if i == button and not done:
-                    program = " ".join(config_file["Commands"][button])
-                    subprocess.call(list(program.split(" ")))
-                    done = True
-
-
-class ServerApp:
-    app = FastAPI()
-
-    origins = [
-        "*",
-    ]
-
-    app.add_middleware(
-        CORSMiddleware,
-        allow_origins=origins,
-        allow_credentials=True,
-        allow_methods=["*"],
-        allow_headers=["*"],
-    )
-
-    port = 4000
-
-    with open("config.yaml", "r") as f:
-        config_file = yaml.safe_load(f)
-
-    users = {"client": str(config_file["Config"]["Key"])}
-
-    def push_button(button):
-        done = False
+    if config_file["Mappings"] is not None:
         for i in config_file["Mappings"]:
             if i == button:
                 for b in config_file["Mappings"][button]:
@@ -63,27 +25,53 @@ class ServerApp:
 
                 for b in config_file["Mappings"][button]:
                     pyautogui.keyUp(str(b))
-            else:
-                for i in config_file["Commands"]:
-                    if i == button and not done:
-                        program = " ".join(config_file["Commands"][button])
-                        subprocess.call(list(program.split(" ")))
-                        done = True
 
-    @app.get("/button_pressed", response_class=PlainTextResponse)
-    async def button_pressed(key: str, token: str):
-        if token == str(config_file["Config"]["Key"]):
-            push_button(key)
-            return "ok"
-        else:
-            return "Invalid token"
+    if config_file["Commands"] is not None:
+        for i in config_file["Commands"]:
+            if i == button and not done:
+                program = " ".join(config_file["Commands"][button])
+                subprocess.call(list(program.split(" ")))
+                done = True
 
-    @app.get("/test-token")
-    def test_key(token: str):
-        if token == str(config_file["Config"]["Key"]):
-            return PlainTextResponse("ok")
-        else:
-            return PlainTextResponse("Token incorrect", status_code=401)
+
+
+app = FastAPI()
+
+origins = [
+    "*",
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+port = 4000
+
+with open("config.yaml", "r") as f:
+    config_file = yaml.safe_load(f)
+
+users = {"client": str(config_file["Config"]["Key"])}
+
+
+
+@app.get("/button_pressed", response_class=PlainTextResponse)
+async def button_pressed(key: str, token: str):
+    if token == str(config_file["Config"]["Key"]):
+        push_button(key)
+        return "ok"
+    else:
+        return "Invalid token"
+
+@app.get("/test-token")
+def test_key(token: str):
+    if token == str(config_file["Config"]["Key"]):
+        return PlainTextResponse("ok")
+    else:
+        return PlainTextResponse("Token incorrect", status_code=401)
 
 
 def get_ip_addr():
@@ -112,7 +100,7 @@ try:
             "The config-file already exists. I won't overwrite it, so you could delete the file. Now I'll run the Program.")
         print("to exit, press CTRL-C!")
         if __name__ == "__main__":
-            uvicorn.run(f"{__name__}:ServerApp", host="0.0.0.0", port=content["Config"]["Port"], log_level="error")
+            uvicorn.run(f"{__name__}:app", host="0.0.0.0", port=content["Config"]["Port"], log_level="error")
 
 
 except:
