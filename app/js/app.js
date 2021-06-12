@@ -19,18 +19,20 @@ function onDeviceReady() {
     }
     console.log("Let's go!")
 
-    for (let i=1; i <= 12; i++ ) {
-        
+    for (let i=1; i <= 12; i++ ) {   
         if (localStorage.getItem(`btn-text-${i}`) != null) {
-            console.log(i)
-            document.getElementById(`b${i}`).innerHTML = localStorage.getItem(`btn-text-${i}`)
+            for (let j=0; j <= document.getElementsByClassName(`b${i}`).length-1; j++) {
+                console.log(localStorage.getItem(`btn-text-${i}`), i)
+                document.getElementsByClassName(`b${i}`)[j].innerHTML = localStorage.getItem(`btn-text-${i}`)
+            }
         }
     }
     for (let i=1; i <= 12; i++ ) {
         if (localStorage.getItem(`btn-color-${i}`) != null) {
-            console.log(i)
-            console.log(`btn-color-${i}`)
-            document.getElementById(`b${i}`).style.backgroundColor = localStorage.getItem(`btn-color-${i}`)
+            for (let j=0; j <= document.getElementsByClassName(`b${i}`).length-1; j++) {
+                console.log(j)
+                document.getElementsByClassName(`b${i}`)[j].style.backgroundColor = localStorage.getItem(`btn-color-${i}`)
+            }
         }
     }
 

@@ -6,7 +6,6 @@ var hueb = new Array()
 for (var i = 0; i < elems.length; i++) {
 
   var elem = elems[i];
-  console.log(elems[i], i)
   hueb.push(new Huebee(elem, {
     setText: false,
     staticOpen: false,
@@ -39,7 +38,6 @@ function onDeviceReady() {
   }
   for (let i = 1; i <= 12; i++) {
     if (localStorage.getItem(`btn-color-${i}`) != null) {
-      console.log(`btn-color-${i}`)
       document.getElementById(`b${i}`).style.backgroundColor = localStorage.getItem(`btn-color-${i}`)
     }
   }
