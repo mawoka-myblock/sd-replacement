@@ -34,8 +34,7 @@ jobs:
           pwd
           cordova platform add browser
           cordova build browser
-          ls platforms
-          ls platform
+          ls platforms/browser
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
