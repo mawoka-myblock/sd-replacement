@@ -24,7 +24,7 @@ document.addEventListener('deviceready', onDeviceReady, false);
 
 
 function onDeviceReady() {
-    ServiceWorker.register()
+    ServiceWorkerContainer.register()
     if (localStorage.getItem("analytics") == "all") {
         var Sentry = cordova.require("sentry-cordova.Sentry");
         Sentry.init({ dsn: 'https://790b7fe9e12c41f0b9778bd467b30463@o661934.ingest.sentry.io/5802311' });

@@ -5,7 +5,7 @@ var active_btn = null
 var buttonsAvailable = ["b1", "b2", "b3", "b4", "b5", "b6", "b7", "b8", "b9", "b10", "b11", "b12"]
 
 function onDeviceReady() {
-    ServiceWorker.register()
+    ServiceWorkerContainer.register()
     // Cordova is now initialized. Have fun!
     if (localStorage.getItem("analytics") == "all") {
         var Sentry = cordova.require("sentry-cordova.Sentry");
