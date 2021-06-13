@@ -72,34 +72,6 @@ function buttonPressed(btn) {
 
 
 
-document.addEventListener("long-press", function(e){ 
-    console.log("L67")
-    
-    do_req = false
-    var elems = document.querySelectorAll('.modal');
-    var elem = document.getElementById("settings")
-    var instances = M.Modal.init(elems, {dismissable: false, startingTop: "10%", endingTop: "10%"})
-    var instance = M.Modal.getInstance(elem);
-    instance.open()
-    active_btn = e.target.id
-    console.log(active_btn)
-    console.log("L76")
-    
-    if (e.target.id == "b1") {
-        console.log("L79")
-        var hueb = new Huebee( ".color-input", {
-            setText: false,
-            staticOpen: true,
-            notation: 'hex',
-            saturations: 2,
-        } )
-        
-    }
-    do_req = true
-})
-
-
-
 document.addEventListener("keypress", (e) => {
     if (do_req == true) {
         buttonPressed((e.code).replace("Key", "").toLowerCase())
