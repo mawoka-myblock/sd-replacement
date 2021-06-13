@@ -67,3 +67,6 @@ A list of all buttons which can be pushed is [Here](https://pyautogui.readthedoc
 # Build the Client
 The client is written with [Cordova](https://cordova.apache.org). To build, install Cordova, add a platform and build.
 
+# Web-Version
+- The Production-Web-Version is here: [https://mawoka-myblock.github.io/sd-replacement/app/](https://mawoka-myblock.github.io/sd-replacement/app/)
+- The Dev-Web-Version which comes directly from last commit is here: [https://mawoka-myblock.github.io/sd-replacement/dev/](https://mawoka-myblock.github.io/sd-replacement/dev/)
