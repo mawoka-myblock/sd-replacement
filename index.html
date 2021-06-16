@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Sd-Replacement</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@materializecss/materialize@1.1.0-alpha/dist/css/materialize.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/@materializecss/materialize@1.1.0-alpha/dist/js/materialize.min.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" href="//unpkg.com/@highlightjs/cdn-assets@11.0.1/styles/default.min.css">
+        <script src="//unpkg.com/@highlightjs/cdn-assets@11.0.1/highlight.min.js"></script>
+        <!--<link rel="preconnect" href="https://fonts.gstatic.com">-->
+        <link href="https://fonts.googleapis.com/css2?family=Marck+Script&display=swap" rel="stylesheet">
+        <style>
+            body {
+                background: linear-gradient(to right, #009444, #39b54a, #8dc63f);
+                height: 100%;
+                width: 100%;
+                background-repeat: no-repeat;
+                background-size: cover;
+                /*background: linear-gradient(-225deg, #231557 0%, #44107A 29%, #FF1361 67%, #FFF800 100%); */
+                /*background: linear-gradient(-225deg, #22E1FF 0%, #1D8FE1 48%, #625EB1 100%); */
+                color:beige;
+                background-size: 400% 400%;
+                animation: background_animation 15s ease infinite;
+            }
+            @keyframes background_animation {
+                0% {
+                    background-position: 0% 50%;
+                }
+                50% {
+                    background-position: 100% 50%;
+                }
+                100% {
+                    background-position: 0% 50%;
+                }
+            }
+            pre code.hljs{display:block;overflow-x:auto;padding:1em}code.hljs{padding:3px 5px}.hljs{color:#a8a19f;background:#1b1918}.hljs ::selection{color:#68615e}.hljs-comment{color:#766e6b}.hljs-tag{color:#9c9491}.hljs-operator,.hljs-punctuation,.hljs-subst{color:#a8a19f}.hljs-operator{opacity:.7}.hljs-bullet,.hljs-deletion,.hljs-name,.hljs-selector-tag,.hljs-template-variable,.hljs-variable{color:#f22c40}.hljs-attr,.hljs-link,.hljs-literal,.hljs-number,.hljs-symbol,.hljs-variable.constant_{color:#df5320}.hljs-class .hljs-title,.hljs-title,.hljs-title.class_{color:#c38418}.hljs-strong{font-weight:700;color:#c38418}.hljs-addition,.hljs-code,.hljs-string,.hljs-title.class_.inherited__{color:#7b9726}.hljs-built_in,.hljs-doctag,.hljs-keyword.hljs-atrule,.hljs-quote,.hljs-regexp{color:#3d97b8}.hljs-attribute,.hljs-function .hljs-title,.hljs-section,.hljs-title.function_,.ruby .hljs-property{color:#407ee7}.diff .hljs-meta,.hljs-keyword,.hljs-template-tag,.hljs-type{color:#6666ea}.hljs-emphasis{color:#6666ea;font-style:italic}.hljs-meta,.hljs-meta .hljs-keyword,.hljs-meta .hljs-string{color:#c33ff3}.hljs-meta .hljs-keyword,.hljs-meta-keyword{font-weight:700}
+            
+
+        </style>
+        <script>
+            function copyTextToClipboard(text) {
+                if (!navigator.clipboard) {
+                    fallbackCopyTextToClipboard(text);
+                    return;
+                }
+                navigator.clipboard.writeText(text).then(function() {
+                    M.toast({text: 'Copied to Clipboard!'})
+                }, function(err) {
+                    console.error('Async: Could not copy text: ', err);
+                });
+                }
+
+            function copyToClipboard(elem) {
+                copyTextToClipboard(document.getElementById(elem).innerHTML)
+            }
+
+        </script>
+            
+    </head>
+    <body>
+        <div class="container">
+            <div class="row center-align">
+                <h1 class="center-align" style="font-family: 'Marck Script'; text-shadow: 1px 1px 2px black;">
+                    Sd-Replacement
+                </h1>
+            </div>
+            <div class="row center-align">
+                <p class="center-align flow-text">
+                    The program which makes your like easier!
+                </p>
+            </div>
+            <section>
+                <h3 class="center-align" style="font-family: 'Marck Script'; text-shadow: 1px 1px 2px black;">Setup</h3>
+                <p class="flow-text center-align">
+                    At first, the setup is <a style="color: beige; text-decoration: underline;">simple</a>.
+                </p>
+                <p class="flow-text center-align">
+                    So, Let's start! 
+                    <br>
+                    At first, clone the repo:
+                </p>
+                <pre><code class="bash center-align" style="outline: 5px dotted black; cursor: copy;" onclick="copyToClipboard('git_clone')">git clone https://github.com/mawoka-myblock/sd-replacement</code></pre>
+                <p class="flow-text center-align">
+                    Go into the new <code>sd-replacement</code> and <br>
+                    Install the requirements: <br>
+                </p>
+                <pre class="center-align"><code class="bash" style="outline: 5px dotted black; cursor: copy;" onclick="copyToClipboard('install_requ')">pip install -r requirements.txt</code></pre>
+                <p class="flow-text center-align">
+                    Lastly, run the script:
+                </p>
+                <pre><code class="bash center-align" style="outline: 5px dotted black; cursor: copy;" onclick="copyToClipboard('run_script')">python3 main.py</code></pre>
+                <p class="flow-text center-align">
+                    Now it asks you some things and gives you your IP-Adress <br>
+                    and your PIN. Keep it! You will need it later!
+                </p>
+            </section>
+            <section>
+                <h3 style="font-family: 'Marck Script'; text-shadow: 1px 1px 2px black;" class="center-align">Configuration</h3>
+                <p class="flow-text center-align">
+                    The configuration should be easy to understand, <br>
+                    but i'll explain it anyway. Let's start by looking at the example:
+                </p>
+                <pre><code class="yaml" style="outline: 5px dotted black;">Config:
+  Key: 193749 # The key required for authentication 
+  Port: 4000 # To adjust the port manually also if it doesn't work...
+Mappings: # Here you can specify everything
+  c:   # If the button "c" gets pressed, do the following:
+    - alt # Press ALT
+    - f4  # And F4
+  b: # If the button "b" gets pressed, press...
+    - ctrl # ...CTRL
+    - c # ...c
+  b2: # The second button in the interface, no keyboard-button
+     - a
+     - b
+     - c    
+Commands:  # Here can be put shell-commands
+  l:   # If the button "l" is pressed, execute...
+    - brave https://ddg.gg # ... brave https://ddg.gg</code></pre>
+                <p class="flow-text center-align">
+                    Note: you cannot specify more than one command
+                    BUT you can do this:
+                </p>
+                <pre><code class="bash center-align" style="outline: 5px dotted black;">brave https://ddg.gg && brave https://mawoka.eu.org</code></pre>
+                <p class="flow-text center-align">
+                    So the config looks like this for example:
+                </p>
+                <pre><code class="yaml" style="outline: 5px dotted black;">...
+Commands:
+  l:
+    - brave https://ddg.gg && brave https://mawoka.eu.org
+                </code></pre>
+            </section>
+            <section>
+                <h2 style="font-family: 'Marck Script'; text-shadow: 1px 1px 2px black;" class="center-align">Sd-Client</h2>
+                <p class="flow-text center-align">
+                    You can access the client<br>
+                </p>
+                <div class="container center-align">
+                    <a class="btn-large waves-effect" style="background-color: #8dc63f;" href="/app">Here!</a>
+                </div>
+                <p class="flow-text center-align">
+                    You access the settings with holding for 2 sec anywhere!
+
+                </p>
+                <h3 style="font-family: 'Marck Script'; text-shadow: 1px 1px 2px black;" class="center-align">Important Note</h3>
+                <p class="flow-text center-align">
+                    The buttons are numbered! You can see that if you didn't change any names of these buttons! <br>
+                    The names for the buttons to use them in your config-file are <code>b</code> and the number, <br>
+                    for example <code>b3</code> for Button 3
+                </p>
+                
+            </section>
+            
+
+        </div>
+
+        <script>hljs.highlightAll();</script>
+    </body>
+    <a id="git_clone" style="visibility: hidden;">git clone https://github.com/mawoka-myblock/sd-replacement</a>
+    <a id="install_requ" style="visibility: hidden;">python3 -m pip install -r requirements.txt</a>
+    <a id="run_script" style="visibility: hidden;">python3 main.py</a>
+</html>
+
+
+
+
+<!--
+    Darck-green: #009444
+    Middle-green: #39b54a
+    Light-Green: #8dc63f
+-->
