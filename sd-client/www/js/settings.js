@@ -31,6 +31,15 @@ function saveSettings(ButtonNumber) {
 
 document.addEventListener('deviceready', onDeviceReady, false);
 function onDeviceReady() {
+
+  
+  if (localStorage.getItem("analytics") == "all") {
+    var Sentry = cordova.require("sentry-cordova.Sentry");
+    Sentry.init({ dsn: 'https://790b7fe9e12c41f0b9778bd467b30463@o661934.ingest.sentry.io/5802311' });
+  } else if (localStorage.getItem("analytics") == "nothing") {
+  }
+
+
   for (let i = 1; i <= 12; i++) {
     if (localStorage.getItem(`btn-text-${i}`) != null) {
       document.getElementById(`b${i}`).innerHTML = localStorage.getItem(`btn-text-${i}`)

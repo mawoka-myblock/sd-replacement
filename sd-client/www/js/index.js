@@ -27,17 +27,11 @@ function onDeviceReady() {
     if (localStorage.getItem("analytics") == "all") {
         var Sentry = cordova.require("sentry-cordova.Sentry");
         Sentry.init({ dsn: 'https://790b7fe9e12c41f0b9778bd467b30463@o661934.ingest.sentry.io/5802311' });
-    } else if (localStorage.getItem("analytics") == "sentry") {
-        var Sentry = cordova.require("sentry-cordova.Sentry");
-        Sentry.init({ dsn: 'https://790b7fe9e12c41f0b9778bd467b30463@o661934.ingest.sentry.io/5802311' });
     } else if (localStorage.getItem("analytics") == "nothing") {
-    } else {
-        var Sentry = cordova.require("sentry-cordova.Sentry");
-        Sentry.init({ dsn: 'https://790b7fe9e12c41f0b9778bd467b30463@o661934.ingest.sentry.io/5802311' });
     }
     
 
-    console.log('Running cordova-' + cordova.platformId + '@' + cordova.version);
+
 
     if (localStorage.getItem("analytics") != true) {
         var elems = document.querySelectorAll('.modal');
