@@ -5,18 +5,12 @@ var active_btn = null
 var buttonsAvailable = ["b1", "b2", "b3", "b4", "b5", "b6", "b7", "b8", "b9", "b10", "b11", "b12"]
 
 function onDeviceReady() {
-    ServiceWorker.register()
-    // Cordova is now initialized. Have fun!
+
+
     if (localStorage.getItem("analytics") == "all") {
         var Sentry = cordova.require("sentry-cordova.Sentry");
         Sentry.init({ dsn: 'https://790b7fe9e12c41f0b9778bd467b30463@o661934.ingest.sentry.io/5802311' });
-    } else if (localStorage.getItem("analytics") == "sentry") {
-        var Sentry = cordova.require("sentry-cordova.Sentry");
-        Sentry.init({ dsn: 'https://790b7fe9e12c41f0b9778bd467b30463@o661934.ingest.sentry.io/5802311' });
     } else if (localStorage.getItem("analytics") == "nothing") {
-    } else {
-        var Sentry = cordova.require("sentry-cordova.Sentry");
-        Sentry.init({ dsn: 'https://790b7fe9e12c41f0b9778bd467b30463@o661934.ingest.sentry.io/5802311' });
     }
     console.log("Let's go!")
 

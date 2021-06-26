@@ -19,12 +19,9 @@
 -->
 <html>
     <head>
-    <script>
-    (function(w){var i=w.SENTRY_RELEASE=w.SENTRY_RELEASE||{};i.id='26493b07587bccc9e40f';})(this);
-    </script>
-    <!-- sentry-cordova -->
         <meta charset="utf-8">
         <link rel="manifest" href="sd.webmanifest">
+        <script async defer data-website-id="0138ef32-b6a0-43ba-8877-cf6e02402277" src="https://analytics.mawoka.eu.org/umami.js"></script>
     
         <meta name="format-detection" content="telephone=no">
         <meta name="msapplication-tap-highlight" content="no">
@@ -50,14 +47,13 @@
             <div class="modal-content">
                 <h4>Analytics</h4>
                 <p>Yea, we all love Analytics (Not)! I, <a href="https://mawoka.eu.org">Mawoka</a>, hate Analytics, BUT I don't have a problem with them at all.
-                I only have a problem with these tech-giants who get the data (*Google, Facebook*). Because of that, I use <a href="https://sentry.io">Sentry</a>.
-                Other analytics aren't implemented yet. <br>
-                So, please help me via enabling Sentry, so I see bugs and errors, which are occuring while you use the app. Of course, you don't have to agree. You can disagree by scrolling down on the buttons.</p>
+                I only have a problem with these tech-giants who get the data (*Google, Facebook*). Because of that, I use <a href="https://sentry.io">Sentry</a> and
+                <a href="https://umami.is">Umami</a>. Umami is selfhosted, Sentry not. I really need these analytics to know whether anyone uses this software or not.
+                So, please help me via enabling Sentry, so I see bugs and errors, which are occuring while you use the app. Of course, you don't have to agree.</p>
             </div>
             <div class="modal-footer">
-                <a href="#!" class="modal-close waves-effect waves-green btn-flat" onclick='localStorage.setItem("analytics", "sentry")'>Allow only Sentry</a>
+                <a href="#!" class="modal-close waves-effect waves-green btn-flat" onclick='localStorage.setItem("analytics", "nothing")'>Allow only Umami</a>
                 <a href="#!" class="modal-close waves-effect waves-green btn-flat" onclick='localStorage.setItem("analytics", "all")'>Allow all</a>
-                <a href="#!" class="modal-close waves-effect waves-green btn-flat" onclick='localStorage.setItem("analytics", "nothing")'>Allow Nothing</a>
             </div>
           </div>
 
@@ -101,6 +97,11 @@
         </div>
             <script src="cordova.js"></script>
             <script src="js/index.js"></script>
+            <script>
+                if ("serviceWorker" in navigator) {
+                    navigator.serviceWorker.register("sw.js")
+                }
+            </script>
         
     </body>
 </html>
