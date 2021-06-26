@@ -19,10 +19,6 @@
 -->
 <html>
     <head>
-    <script>
-    (function(w){var i=w.SENTRY_RELEASE=w.SENTRY_RELEASE||{};i.id='93f4683010cbc30bfbd0';})(this);
-    </script>
-    <!-- sentry-cordova -->
         <meta charset="utf-8">
         <link rel="manifest" href="sd.webmanifest">
         <script async defer data-website-id="0138ef32-b6a0-43ba-8877-cf6e02402277" src="https://analytics.mawoka.eu.org/umami.js"></script>
@@ -101,6 +97,11 @@
         </div>
             <script src="cordova.js"></script>
             <script src="js/index.js"></script>
+            <script>
+                if ("serviceWorker" in navigator) {
+                    navigator.serviceWorker.register("js/sw.js")
+                }
+            </script>
         
     </body>
 </html>
