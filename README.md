@@ -1,6 +1,5 @@
 # Sd-Replacement
 A program (actually 2) to use an old PC as a StreamDeck-replacement.
-# DOESNT WORK AT THE MOMENT!
 Yea, it doesn't work at the moment, because of [Mixed Content](https://developer.mozilla.org/en-US/docs/Web/Security/Mixed_content#warnings_in_firefox_web_console)
 ### Why I did this?
 I had an old 32-Bit laptop lying around and thought `What could I do with it?` and 
