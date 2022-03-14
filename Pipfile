@@ -1,0 +1,22 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+fastapi = "*"
+uvicorn = {extras = ["standard"], version = "*"}
+ormar = {extras = ["postgresql", "sqlite"], version = "*"}
+python-socketio = "*"
+pydantic = "*"
+databases = "*"
+sqlalchemy = "*"
+aiohttp = "*"
+aiofiles = "*"
+
+[dev-packages]
+requests = "*"
+websocket-client = "*"
+
+[requires]
+python_version = "3.10"

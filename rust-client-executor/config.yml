@@ -1,0 +1,13 @@
+server: http://localhost:8000/socket.io/
+phrase: kanji hoatzin semipedantic nepheloid underclothed
+mappings:
+  trigger: l
+  mapping:
+    - space
+
+commands:
+  - trigger: space
+    command: firefox-developer-edition
+    args:
+      - --new-window
+      - https://www.google.com/search?q=%s
