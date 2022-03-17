@@ -13,6 +13,7 @@ databases = "*"
 sqlalchemy = "*"
 aiohttp = "*"
 aiofiles = "*"
+gunicorn = "*"
 
 [dev-packages]
 requests = "*"
