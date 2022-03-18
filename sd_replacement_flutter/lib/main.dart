@@ -30,7 +30,9 @@ class MyApp extends StatelessWidget {
         // or simply save your changes to "hot reload" in a Flutter IDE).
         // Notice that the counter didn't reset back to zero; the application
         // is not restarted.
-        primarySwatch: Colors.blue,
+        colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.blue, primaryColorDark: Colors.blue[900])
+            .copyWith(secondary: Colors.green, secondaryVariant: Colors.green[700]),
+
       ),
       //home: const MyHomePage(title: 'Flutter Demo Home Page'),
       home: MyHomePage(title: 'SD-Replacement'),
@@ -79,12 +81,15 @@ class _MyHomePageState extends State<MyHomePage> {
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
     return Scaffold(
+      backgroundColor: Colors.green,
       appBar: AppBar(
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
       ),
-      body: _global_storage.isAuthenticated() ? const MainScreen() : const LoginScreen(),
+      body: _global_storage.isAuthenticated()
+          ? const MainScreen()
+          : const LoginScreen(),
       /*floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
         tooltip: 'Increment',

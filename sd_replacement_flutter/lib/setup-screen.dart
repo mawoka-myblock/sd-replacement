@@ -47,19 +47,13 @@ class _LoginScreenState extends State<LoginScreen> {
   // bool _isVisible = false;
   bool isInputValid = false;
 
-  final TapGestureRecognizer _gestureRecognizer = TapGestureRecognizer()
-    ..onTap = () {
-      if (kDebugMode) {
-        print("Hello world from _gestureRecognizer");
-      }
-    };
-
   @override
   Widget build(BuildContext context) {
     final ButtonStyle style = ElevatedButton.styleFrom(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
         shadowColor: Colors.black);
     return Scaffold(
+      backgroundColor: Colors.green,
         body: SingleChildScrollView(
             reverse: true,
             padding: const EdgeInsets.all(20),

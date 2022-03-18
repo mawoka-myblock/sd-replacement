@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import "storage.dart";
+import "dart:ui";
 import 'package:socket_io_client/socket_io_client.dart' as IO;
+import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 
 class MainMainScreen extends StatelessWidget {
   const MainMainScreen({Key? key}) : super(key: key);
@@ -22,6 +24,8 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen> {
   late IO.Socket socket;
   GlobalStorage _global_storage = GlobalStorage();
+  bool disableKeyListener = false;
+
   var _lastPressedKey;
   var _lastPressedTime = 0;
 
@@ -74,6 +78,9 @@ class _MainScreenState extends State<MainScreen> {
 
   void _onButtonClicked({buttonName = String}) {
     buttonName = buttonName.toLowerCase();
+    if (_global_storage.disableKeyboardListener) {
+      return;
+    }
     if (keymap.containsKey(buttonName)) {
       print("Sending button-press, ${keymap[buttonName]}");
       socket.emit("button-press", {"button": keymap[buttonName]});
@@ -81,21 +88,69 @@ class _MainScreenState extends State<MainScreen> {
       print("Sending button-press, $buttonName");
       socket.emit("execute", {"function": buttonName});
     }
-
-
   }
 
-  List<ElevatedButton> _generateButtons({count = int}) {
-    return List<ElevatedButton>.generate(
+  List<Container> _generateButtons({count = int}) {
+    TextEditingController titleController = TextEditingController();
+    for (var i = 0; i < count; i++) {
+      _global_storage.buttonNames.add(Text("Button ${i + 1}"));
+      _global_storage.buttonColors.add(Colors.blue);
+    }
+    Color pickerColor = Colors.green;
+    void changeColor(Color color, int index) {
+      setState(() => pickerColor = _global_storage.buttonColors[index] = color);
+    }
+
+    void onNameChange(String name, int index) {
+      setState(() => _global_storage.buttonNames[index] = Text(name));
+    }
+
+    return List<Container>.generate(
       count,
-          (index) =>
-          ElevatedButton(
-            style: ElevatedButton.styleFrom(
-                minimumSize: const Size(300, 300),
-                padding: const EdgeInsets.all(20)),
-            onPressed: () => _onButtonClicked(buttonName: "b_${index + 1}"),
-            child: Text("Button ${index + 1}"),
-          ),
+      (index) => Container(
+        width: window.physicalSize.width,
+        padding: const EdgeInsets.all(10),
+        height: window.physicalSize.height / 8,
+        child: ElevatedButton(
+          style: ElevatedButton.styleFrom(
+              //fixedSize: Size(window.physicalSize.width, (window.physicalSize.height / 20)),
+              padding: const EdgeInsets.all(20),
+              primary: _global_storage.buttonColors[index]),
+          onLongPress: () => setState(() {
+            _global_storage.disableKeyboardListener = true;
+            showDialog(
+                context: context,
+                builder: (BuildContext context) {
+                  return AlertDialog(
+                    title: Text("Button ${index + 1}"),
+                    content: MaterialPicker(
+                      pickerColor: pickerColor,
+                      onColorChanged: (color) => changeColor(color, index),
+                    ),
+                    actions: <Widget>[
+                      TextField(
+                        decoration: const InputDecoration(
+                          hintText: "Enter your name",
+                        ),
+                        controller: titleController,
+                      ),
+                      TextButton(
+                        child: const Text("Close"),
+                        onPressed: () => {
+                          Navigator.of(context).pop(),
+                          _global_storage.disableKeyboardListener = false,
+                          onNameChange(titleController.text, index),
+                          //Navigator.pushReplacementNamed(context, "/app"),
+                        },
+                      ),
+                    ],
+                  );
+                });
+          }),
+          onPressed: () => _onButtonClicked(buttonName: "b_${index + 1}"),
+          child: _global_storage.buttonNames[index],
+        ),
+      ),
     );
 
     /*ElevatedButton(
@@ -112,16 +167,17 @@ class _MainScreenState extends State<MainScreen> {
     return RawKeyboardListener(
         focusNode: FocusNode(),
         autofocus: true,
-        onKey: (key) =>
-        {
-          if (key is RawKeyDownEvent && key.character != null)
-            {_onButtonClicked(buttonName: key.character?.toLowerCase())}
-        },
-        child: GridView.count(
-            padding: const EdgeInsets.all(4),
-            mainAxisSpacing: 4,
-            crossAxisSpacing: 4,
-            crossAxisCount: 3,
-            children: _generateButtons(count: 10)));
+        onKey: (key) => {
+              if (key is RawKeyDownEvent && key.character != null)
+                {_onButtonClicked(buttonName: key.character?.toLowerCase())}
+            },
+        child: ListView(
+            //padding: const EdgeInsets.all(4),
+
+            //mainAxisSpacing: 4,
+            //crossAxisSpacing: 4,
+            //crossAxisCount: 1,
+            children:
+                _generateButtons(count: window.physicalSize.height ~/ 90)));
   }
 }
