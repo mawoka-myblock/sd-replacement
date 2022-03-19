@@ -27,7 +27,6 @@ class _MainScreenState extends State<MainScreen> {
   GlobalStorage _global_storage = GlobalStorage();
   bool disableKeyListener = false;
 
-
   var keymap = {
     "0": "numrow0",
     "1": "numrow1",
@@ -49,9 +48,10 @@ class _MainScreenState extends State<MainScreen> {
     }
     //socket = IO.io('http://localhost:8000/socket.io/', <String, dynamic>{
     socket = IO.io(
-        kDebugMode
+/*        kDebugMode
             ? "http://localhost:8000"
-            : "https://sd-replacement-server.mawoka.eu",
+            : "https://sd-replacement-server.mawoka.eu",*/
+        "http://192.168.2.233:8000",
         <String, dynamic>{
           'transports': ['websocket'],
           "namespace": "/",

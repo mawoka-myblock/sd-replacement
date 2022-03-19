@@ -30,6 +30,7 @@ io.use((socket, next) => {
 io.on('connection', (socket) => {
     const session = socket.request.session;
     socket.on("server_connect", (data) => {
+        console.log(data);
         if (data.phrase.length < 8) {
             socket.emit("on_error", {
                 message: "Phrase must be at least 8 characters long"
@@ -41,6 +42,7 @@ io.on('connection', (socket) => {
         socket.join(getRoomName(data.phrase));
     })
     socket.on("execute", (data) => {
+        console.log(data, session.phrase);
         socket.to(getRoomName(session.phrase)).emit("execute", data);
     })
 });

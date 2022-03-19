@@ -24,7 +24,7 @@ fn main() {
             Payload::Binary(bin_data) => panic!("Received binary data: {:?}", bin_data),
             Payload::String(string_data) => string_data,
         };
-        // println!("{:?}", string_payload);
+        println!("{:?}", string_payload);
         // serde_json::from_str(&string_data).unwrap()
     };
 
