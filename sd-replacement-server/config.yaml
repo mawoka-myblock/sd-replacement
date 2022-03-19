@@ -1,8 +1,0 @@
-Config:
-  Key: 40584149
-  Port: 4000
-Mappings:
-  a:
-  - CTRL
-  - esc
-  - l

@@ -1,0 +1,14 @@
+server: https://sd-replacement-server.mawoka.eu/socket.io/
+#server: http://192.168.2.233:8000/socket.io/
+phrase: kanji hoatzin semipedantic nepheloid underclothed
+mappings:
+  trigger: l
+  mapping:
+    - space
+
+commands:
+  - trigger: b_1
+    command: firefox-developer-edition
+    args:
+      - --new-window
+      - https://www.google.com/search?q=%s
