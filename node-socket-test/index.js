@@ -15,6 +15,10 @@ const getRoomName = (phrase) => {
     return crypto.createHash('sha256').update(`${phrase}-${secret_key}`).digest('hex');
 }
 
+app.get('/', (req, res) => {
+    res.send("ok")
+});
+
 app.use(sessionMiddleware);
 
 io.use((socket, next) => {
