@@ -1,6 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="eu.mawoka.sd_replacement_flutter">
-   <application
+    <uses-permission android:name="android.permission.INTERNET" />
+    <application
         android:label="sd_replacement_flutter"
         android:name="${applicationName}"
         android:icon="@mipmap/launcher_icon">
