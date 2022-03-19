@@ -1,6 +1,0 @@
-FROM rust
-
-COPY rust-client-executor/ /rust-client-executor/
-WORKDIR /rust-client-executor/
-RUN cargo install --path .
-CMD ["sd-replacement"]
