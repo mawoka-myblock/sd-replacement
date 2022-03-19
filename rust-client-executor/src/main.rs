@@ -88,7 +88,9 @@ fn main() {
     })
         .expect("Error setting Ctrl-C handler");
 
+    thread::sleep(Duration::from_secs(1));
     socket.emit("server_connect", json!({"phrase": &settings.phrase})).unwrap();
+    println!("Connected to server");
 
     thread::sleep(Duration::from_secs(10000000));
 }
