@@ -150,6 +150,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   builder: (context) => const HomePage()),
                               (Route<dynamic> route) => false,
                             );*/
+                                _persistant_storage.saveAuthPhrase(usernameController.text);
                                 _global_storage.authPhrase =
                                     usernameController.text;
                                 Navigator.popAndPushNamed(context, "/app");

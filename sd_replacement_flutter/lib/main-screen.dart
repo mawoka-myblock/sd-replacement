@@ -194,22 +194,25 @@ class _MainScreenState extends State<MainScreen> {
               if (key is RawKeyDownEvent && key.character != null)
                 {_onButtonClicked(buttonName: key.character?.toLowerCase())}
             },
-        child: FutureBuilder<List<Container>>(
-          future: _generateButtons(count: window.physicalSize.height ~/ 80),
-          builder:
-              (BuildContext context, AsyncSnapshot<List<Container>> snapshot) {
-            if (snapshot.hasData) {
-              final List<Container> buttons =
-                  snapshot.data ?? [Container(child: const Text("No data"))];
-              return ListView(
-                children: buttons,
-              );
-            } else {
-              return const Center(
-                child: CircularProgressIndicator(),
-              );
-            }
-          },
+        child: WillPopScope(
+          onWillPop: () => Future.value(false),
+          child: FutureBuilder<List<Container>>(
+            future: _generateButtons(count: window.physicalSize.height ~/ 80),
+            builder:
+                (BuildContext context, AsyncSnapshot<List<Container>> snapshot) {
+              if (snapshot.hasData) {
+                final List<Container> buttons =
+                    snapshot.data ?? [Container(child: const Text("No data"))];
+                return ListView(
+                  children: buttons,
+                );
+              } else {
+                return const Center(
+                  child: CircularProgressIndicator(),
+                );
+              }
+            },
+          ),
         ));
   }
 }

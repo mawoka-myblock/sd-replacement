@@ -2,7 +2,7 @@
     package="eu.mawoka.sd_replacement_flutter">
     <uses-permission android:name="android.permission.INTERNET" />
     <application
-        android:label="sd_replacement_flutter"
+        android:label="SD-Replacement"
         android:name="${applicationName}"
         android:icon="@mipmap/launcher_icon">
         <activity
