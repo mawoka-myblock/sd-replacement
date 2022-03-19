@@ -24,12 +24,12 @@ fn main() {
             Payload::Binary(bin_data) => panic!("Received binary data: {:?}", bin_data),
             Payload::String(string_data) => string_data,
         };
-        println!("{:?}", string_payload);
+        // println!("{:?}", string_payload);
         // serde_json::from_str(&string_data).unwrap()
     };
 
     let execute_function_callback = move |payload: Payload, socket: Client| {
-        println!("Execute function");
+        //println!("Execute function");
         let json_payload: Value = match payload {
             Payload::Binary(bin_data) => panic!("Received binary data: {:?}", bin_data),
             Payload::String(string_data) => serde_json::from_str(&string_data).unwrap()
@@ -56,14 +56,14 @@ fn main() {
                 if key_name == mapping.trigger {
                     for keys in mapping.mapping.iter() {
                         for key in keys.iter() {
-                            println!("{:?} press", key);
+                            //println!("{:?} press", key);
                             sleep(Duration::from_millis(50));
                             inputbot::KeybdKey::SpaceKey.release();
                             press_key(key.clone());
                         }
                         sleep(Duration::from_millis(600));
                         for key in keys.iter() {
-                            println!("{:?} release", key);
+                            //println!("{:?} release", key);
                             inputbot::KeybdKey::SpaceKey.release();
                             release_key(key.clone());
                         }

@@ -110,7 +110,9 @@ class _MainScreenState extends State<MainScreen> {
       (index) => Container(
         width: window.physicalSize.width,
         padding: const EdgeInsets.all(10),
-        height: window.physicalSize.height / 8,
+        height: window.physicalSize.width < window.physicalSize.height
+            ? window.physicalSize.width / 8
+            : window.physicalSize.height / 8,
         child: ElevatedButton(
           style: ElevatedButton.styleFrom(
               //fixedSize: Size(window.physicalSize.width, (window.physicalSize.height / 20)),
@@ -178,6 +180,6 @@ class _MainScreenState extends State<MainScreen> {
             //crossAxisSpacing: 4,
             //crossAxisCount: 1,
             children:
-                _generateButtons(count: window.physicalSize.height ~/ 90)));
+                _generateButtons(count: window.physicalSize.height ~/ 80)));
   }
 }

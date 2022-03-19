@@ -6,6 +6,7 @@ edition = "2021"
 
 [dependencies]
 rust_socketio = "0.3.0"
+#rust_socketio = { git = "https://github.com/1c3t3a/rust-socketio", branch = "issue-166"}
 serde_json = "1.0"
 config = { version = "0.12", features = ["yaml", "json"] }
 serde_derive = "1.0"

@@ -11,19 +11,19 @@ def get_room_name(phrase: str) -> str:
     return sha256(f"{phrase}-{settings.secret_key}".encode()).hexdigest()
 
 
-@sio.on('*')
-async def catch_all(event, sid, data):
-   print(f"{sid} {event} {data}")
+# @sio.on('*')
+# async def catch_all(event, sid, data):
+#     print(f"{sid} {event} {data}")
 
 
 @sio.event
 async def server_connect(sid: str, data: dict[str, str] | str):
     if type(data) is str:
         data = json.loads(data)
-    print(sid, )
+    # print(sid, )
     phrase = data["phrase"]
     word_list = phrase.split(" ")
-    print(f"{sid} connected with {phrase} and {word_list}")
+    # print(f"{sid} connected with {phrase} and {word_list}")
     if len(word_list) != 5:
         print("wrong number of words")
         await sio.emit("on_error", {"message": "wrong phrase"}, room=sid)
@@ -36,5 +36,5 @@ async def server_connect(sid: str, data: dict[str, str] | str):
 @sio.event
 async def execute(sid, data):
     phrase = (await sio.get_session(sid))["phrase"]
-    print(data, "Execute!")
+    # print(data, "Execute!")
     await sio.emit("execute", data, room=get_room_name(phrase))
