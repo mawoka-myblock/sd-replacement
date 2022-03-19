@@ -1,4 +1,4 @@
-server: http://localhost:8000/socket.io/
+server: https://sd-replacement-server.mawoka.eu/socket.io/
 phrase: kanji hoatzin semipedantic nepheloid underclothed
 mappings:
   trigger: l

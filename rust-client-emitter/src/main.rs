@@ -21,7 +21,7 @@ fn main() {
     };
     let server_address = match matches.opt_str("s") {
         Some(s) => { s }
-        None => { "http://localhost:8000/socket.io/".to_string() }
+        None => { "https://sd-replacement-server.mawoka.eu/".to_string() }
     };
     if !matches.opt_present("c") {
         panic!("No Phrase specified!");

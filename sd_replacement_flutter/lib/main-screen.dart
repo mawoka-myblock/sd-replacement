@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import "storage.dart";
@@ -26,8 +27,6 @@ class _MainScreenState extends State<MainScreen> {
   GlobalStorage _global_storage = GlobalStorage();
   bool disableKeyListener = false;
 
-  var _lastPressedKey;
-  var _lastPressedTime = 0;
 
   var keymap = {
     "0": "numrow0",
@@ -45,20 +44,28 @@ class _MainScreenState extends State<MainScreen> {
   };
 
   Future<void> initSocket() async {
-    print('Connecting to chat service');
+    if (kDebugMode) {
+      print('Connecting to chat service');
+    }
     //socket = IO.io('http://localhost:8000/socket.io/', <String, dynamic>{
-    socket = IO.io('http://localhost:8000', <String, dynamic>{
-      'transports': ['websocket'],
-      "namespace": "/",
-      'autoConnect': true,
-      /*'query': {
+    socket = IO.io(
+        kDebugMode
+            ? "http://localhost:8000"
+            : "https://sd-replacement-server.mawoka.eu",
+        <String, dynamic>{
+          'transports': ['websocket'],
+          "namespace": "/",
+          'autoConnect': true,
+          /*'query': {
             'userName': widget.user,
             'registrationToken': registrationToken
           }*/
-    });
+        });
     socket.connect();
     socket.onConnect((_) {
-      print('connected to websocket');
+      if (kDebugMode) {
+        print('connected to websocket');
+      }
       socket.emit("server_connect", {"phrase": _global_storage.authPhrase});
     });
   }
@@ -82,10 +89,15 @@ class _MainScreenState extends State<MainScreen> {
       return;
     }
     if (keymap.containsKey(buttonName)) {
-      print("Sending button-press, ${keymap[buttonName]}");
+      if (kDebugMode) {
+        print("Sending button-press, ${keymap[buttonName]}");
+      }
       socket.emit("button-press", {"button": keymap[buttonName]});
     } else {
-      print("Sending button-press, $buttonName");
+      if (kDebugMode) {
+        print("Sending button-press, $buttonName");
+      }
+
       socket.emit("execute", {"function": buttonName});
     }
   }
