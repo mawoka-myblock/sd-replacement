@@ -5,7 +5,11 @@ const http = require('http');
 const crypto = require('crypto');
 const server = http.createServer(app);
 const {Server} = require("socket.io");
-const io = new Server(server);
+const io = new Server(server, {
+    cors: {
+        origin: ["https://sdreplacement.mawoka.eu", "https://sdreplacement.mawoka.eu.org", "https://sd-replacement.mawoka.eu", "https://sd-replacement.mawoka.eu.org"]
+    }
+});
 
 
 const sessionMiddleware = session({secret: 'keyboard cat', cookie: {maxAge: 60000}});
