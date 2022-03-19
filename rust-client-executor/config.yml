@@ -6,7 +6,7 @@ mappings:
     - space
 
 commands:
-  - trigger: space
+  - trigger: b_1
     command: firefox-developer-edition
     args:
       - --new-window
