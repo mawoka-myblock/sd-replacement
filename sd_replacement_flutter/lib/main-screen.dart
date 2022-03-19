@@ -25,6 +25,7 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen> {
   late IO.Socket socket;
   GlobalStorage _global_storage = GlobalStorage();
+  PersistantStorage _persistant_storage = PersistantStorage();
   bool disableKeyListener = false;
 
   var keymap = {
@@ -48,10 +49,10 @@ class _MainScreenState extends State<MainScreen> {
     }
     //socket = IO.io('http://localhost:8000/socket.io/', <String, dynamic>{
     socket = IO.io(
-/*        kDebugMode
+        kDebugMode
             ? "http://localhost:8000"
-            : "https://sd-replacement-server.mawoka.eu",*/
-        "http://192.168.2.233:8000",
+            : "https://sd-replacement-server.mawoka.eu",
+        // "http://192.168.2.233:8000",
         <String, dynamic>{
           'transports': ['websocket'],
           "namespace": "/",
@@ -67,6 +68,7 @@ class _MainScreenState extends State<MainScreen> {
         print('connected to websocket');
       }
       socket.emit("server_connect", {"phrase": _global_storage.authPhrase});
+      _persistant_storage.saveAuthPhrase(_global_storage.authPhrase);
     });
   }
 
@@ -102,19 +104,26 @@ class _MainScreenState extends State<MainScreen> {
     }
   }
 
-  List<Container> _generateButtons({count = int}) {
+  Future<List<Container>> _generateButtons({count = int}) async {
     TextEditingController titleController = TextEditingController();
-    for (var i = 0; i < count; i++) {
-      _global_storage.buttonNames.add(Text("Button ${i + 1}"));
-      _global_storage.buttonColors.add(Colors.blue);
+    if ((await _persistant_storage.buttonNames).isEmpty || (await _persistant_storage.buttonColors).isEmpty) {
+      for (var i = 0; i < count; i++) {
+        _global_storage.buttonNames.add(Text("Button ${i + 1}"));
+        _global_storage.buttonColors.add(Colors.blue);
+      }
+    } else {
+      _global_storage.buttonNames = await _persistant_storage.buttonNames;
+      _global_storage.buttonColors = await _persistant_storage.buttonColors;
     }
     Color pickerColor = Colors.green;
     void changeColor(Color color, int index) {
       setState(() => pickerColor = _global_storage.buttonColors[index] = color);
+      _persistant_storage.saveButtonColors(_global_storage.buttonColors);
     }
 
     void onNameChange(String name, int index) {
       setState(() => _global_storage.buttonNames[index] = Text(name));
+      _persistant_storage.saveButtonNames(_global_storage.buttonNames);
     }
 
     return List<Container>.generate(
@@ -185,13 +194,22 @@ class _MainScreenState extends State<MainScreen> {
               if (key is RawKeyDownEvent && key.character != null)
                 {_onButtonClicked(buttonName: key.character?.toLowerCase())}
             },
-        child: ListView(
-            //padding: const EdgeInsets.all(4),
-
-            //mainAxisSpacing: 4,
-            //crossAxisSpacing: 4,
-            //crossAxisCount: 1,
-            children:
-                _generateButtons(count: window.physicalSize.height ~/ 80)));
+        child: FutureBuilder<List<Container>>(
+          future: _generateButtons(count: window.physicalSize.height ~/ 80),
+          builder:
+              (BuildContext context, AsyncSnapshot<List<Container>> snapshot) {
+            if (snapshot.hasData) {
+              final List<Container> buttons =
+                  snapshot.data ?? [Container(child: const Text("No data"))];
+              return ListView(
+                children: buttons,
+              );
+            } else {
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
+            }
+          },
+        ));
   }
 }

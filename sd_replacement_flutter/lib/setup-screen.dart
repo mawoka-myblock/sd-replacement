@@ -15,13 +15,21 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   GlobalStorage _global_storage = GlobalStorage();
+  PersistantStorage _persistant_storage = PersistantStorage();
   TextEditingController usernameController = TextEditingController();
+
+  void redirectIfLoggedIn() async {
+    bool signedIn = await _persistant_storage.authPhrase != null;
+    if (signedIn) {
+      Navigator.pushNamed(context, '/app');
+    }
+  }
 
   @override
   void initState() {
-    if (_global_storage.isAuthenticated()) {
-      Navigator.pushNamed(context, '/app');
-    }
+    redirectIfLoggedIn();
+
+
     super.initState();
     usernameController.addListener(() {
       List<String> wordList = usernameController.text
