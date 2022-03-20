@@ -44,6 +44,7 @@ class _MainScreenState extends State<MainScreen> {
   };
 
   Future<void> initSocket() async {
+    _global_storage.authPhrase = await _persistant_storage.authPhrase ?? "";
     if (kDebugMode) {
       print('Connecting to chat service');
     }
