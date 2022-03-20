@@ -68,7 +68,7 @@ class _MainScreenState extends State<MainScreen> {
         print('connected to websocket');
       }
       socket.emit("server_connect", {"phrase": _global_storage.authPhrase});
-      _persistant_storage.saveAuthPhrase(_global_storage.authPhrase);
+      // _persistant_storage.saveAuthPhrase(_global_storage.authPhrase);
     });
   }
 
